@@ -5,14 +5,7 @@ import config
 
 from crop_image import CropImage as CI
 
-dir_work = None
-dir_proj = None
-
-
-
 def main():
-
-	# global dir_work, dir_proj
 
 	# there are many types of mouse events. these events can be displayed by running the following line
 	[print(i) for i in dir(cv2) if 'EVENT' in i]
@@ -33,14 +26,10 @@ def main():
 	print('absolute path: ', __file__)
 
 	# Getting the folder path of the file we’re executing
-	config.dir_work = (os.path.dirname(__file__))		# we override variable 'dir_work'
+	config.dir_work = (os.path.dirname(__file__))
 	
 	print('folder path: ', config.dir_work)
-	# print('folder path: ', dir_work)
-
-	#ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))		# '..' = one folder up
-	#print('our root directory is: ', ROOT_DIR)
-
+	
 	config.dir_proj = (os.path.join(config.dir_work, 'project'))
 	print('project directory: ', config.dir_proj)
 	
@@ -52,13 +41,10 @@ def main():
 
 	# return a list containing the names of the entries in the directory given by 'path' ,
 	# here our 'media directory'
-	# list_of_image_files = os.listdir(config.dir_media)
 	list_of_image_files = os.listdir(config.dir_media)
 	print("\n", "list of all files in our 'media directory' :", '\n')
 	for file in list_of_image_files:
 		print("   ", file)
-
-	for file in list_of_image_files:
 		config.file = file
 		CI()
 

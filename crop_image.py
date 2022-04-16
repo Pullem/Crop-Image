@@ -21,24 +21,14 @@ import config
 # Notice that the first parameter for each of these functions (also called methods) is the self parameter.
 class CropImage:
 	
-	# imagePath = None
-	# imageName = None
-	# cropPath = None
-	
 	# attributes of our class
 	cropping = False								# boolean indicating whether cropping is being performed or not
 	x_start, y_start, x_end, y_end = 0, 0, 0, 0		# initialize the list of reference points
 	image = None
 	clone = None			# copy of image
-	# outputFileName = 'crop'
 	scaleValue = 4
-	
-	# outputFileName = os.path.join(cropPath, imageName)
-	# outputFileName = dir_write
-	# outputFileExtension = '.png'
 
 	# functions
-	# def __init__(self, dir_media, file, dir_crop):
 	def __init__(self):
 		# print('we examine this file: ', os.path.join(config.dir_media, config.file))
 		# print('and than we store the cropped frame here: ', config.dir_crop)
@@ -50,12 +40,11 @@ class CropImage:
 		self.file = config.file
 
 		# we will read an image from our file system. 
-		# To do so, we will call the imread function from the imported cv2 module, passing as input the path to the image. 
-		# self.image = cv2.imread(imageName)
+		# To do so, we call the imread function from the imported cv2 module, passing as input the path to the image. 
 		self.image = cv2.imread(os.path.join(self.dir_media, self.file))
 
 		# To know the pixels or dimensions of the image use img.shape
-		print('Dimension of Image:', self.image.shape)
+		print('Dimension of Image:', self.image.shape)		# just for fun
 
 		# Note that the previous function call will return the image as a numpy ndarray. 
 		# Thus, we will make use of the copy method of the ndarray class to obtain a copy of our image.
@@ -110,7 +99,7 @@ class CropImage:
 
 			# https://technicalmasterblog.wordpress.com/2019/07/03/whats-0xff-for-in-cv2-waitkey1/
 
-			# Book: Raspberry Pi Computer Vision Programming: Design and implement computer vision applications
+			# Book: Raspberry Pi Computer Vision Programming: Design and implement computer vision applications:
 			# In order to decide the FPS for the playback, we need to pass the appropriate argument to the call 
 			# of the waitkey () function. Suppose we want to play back the video at 25 FPS, then the argument 
 			# to be passed can be calculated with the 1000/25 = 40 formula. We know that waitkey () waits for 
@@ -130,7 +119,9 @@ class CropImage:
 				#	'image': It is the image that is to be displayed.
 				cv2.imshow(config.file, self.image)
 
+			# https://www.geeksforgeeks.org/python-opencv-cv2-rectangle-method/
 			elif self.cropping:
+				# cv2.rectangle(image, start_point, end_point, color, thickness)
 				cv2.rectangle(i, (self.x_start, self.y_start), (self.x_end, self.y_end), (0, 255, 255), 1)
 				cv2.imshow(config.file, i)
 
@@ -148,7 +139,6 @@ class CropImage:
 		# grab references to the global variables
 		# Using the keyword 'global' before a variable makes this variable to the global scope
 		global x_start, y_start, x_end, y_end, cropping			# grab references to the global variables
-		# self.file_CI = file_CI
 
 		# if the left mouse button was DOWN, start RECORDING (x, y) coordinates and 
 		# indicate that cropping is being performed
@@ -166,8 +156,7 @@ class CropImage:
 		# check to see if the left mouse button was released
 		elif event == cv2.EVENT_LBUTTONUP:
 
-			# record the ending (x, y) coordinates and indicate that
-			# the cropping operation is finished
+			# record the ending (x, y) coordinates and indicate that the cropping operation is finished
 			self.x_end, self.y_end = x, y
 			self.cropping = False		# cropping is finished
 
@@ -240,40 +229,21 @@ class CropImage:
 
 				roi = self.clone[y_small:y_big, x_small:x_big]    
 
-				# outputFile = Path(self.outputFileName + self.outputFileExtension)
 				outputFile = Path(config.file + config.outputFileExtension)
 				print('outputFile (with two extensions): ', outputFile)
 
 				# https://www.pythonpool.com/python-get-filename-without-extension/
 				config.file_base = (os.path.basename(config.file).split('.')[0])
-				# config.file_base = file_base
 				print('filename without extension: ',config.file_base)
-
-				#fileNameCounter = 0
-				#while outputFile.is_file():
-				#	fileNameCounter+=1
-				#	outputFile = Path(self.outputFileName + str(fileNameCounter) + self.outputFileExtension)    
-				#if(fileNameCounter > 0):
-				#	# print('Output File Name: ' + self.outputFileName + str(fileNameCounter) + self.outputFileExtension)
-				#	# cv2.imwrite(self.outputFileName + str(fileNameCounter) + self.outputFileExtension, roi)
-				#	print('Output File Name: ' +self.cropPath +'\\' +self.outputFileName + str(fileNameCounter) + self.outputFileExtension)
 				
 				# Syntax: cv2.imwrite(filename, image)
 				# Parameters: 
 				#	filename: A string representing the file name. The filename must include image format like .jpg, .png, etc
 				#	image: It is the image that is to be saved. (numpy ndarray)
 				#	Return Value: It returns true if image is saved successfully.
-				# cv2.imwrite(self.cropPath +'\\' + self.outputFileName + str(fileNameCounter) + self.outputFileExtension, roi)
-				# imwrite_path = os.path.join(config.dir_crop, config.file, config.outputFileExtension)
 				config.imwrite_Path = os.path.join(config.dir_crop, config.file_base + "." + config.outputFileExtension)
-				# config.imwrite_path = imwrite_Path
 				print('imwrite_Path: ', config.imwrite_Path)
-				# cv2.imwrite(self.cropPath +'\\' + self.outputFileName + str(fileNameCounter) + self.outputFileExtension, roi)
 				cv2.imwrite(config.imwrite_Path, roi)
-
-				#else:
-				#	print('Output File Name: ' + self.outputFileName + self.outputFileExtension)
-				#	cv2.imwrite(self.outputFileName + self.outputFileExtension, roi)
 				
 				scaleX = self.scaleValue
 				scaleY = self.scaleValue
