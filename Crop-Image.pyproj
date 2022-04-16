@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{b9fa0742-6317-44ef-8f14-008f3f06eb6b}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>main.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="config.py" />
+    <Compile Include="crop_image - Copy.py" />
+    <Compile Include="crop_image.py" />
+    <Compile Include="Click_Crop_Image.py" />
+    <Compile Include="main.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="arguments of cv2.setMouseCallback%28%29.py" />
+    <Compile Include="run.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.7</Version>
+      <Description>env (Python 3.7 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="project\cropped\" />
+    <Folder Include="project\" />
+    <Folder Include="project\media\" />
+    <Folder Include="project\sub\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="project\media\Burnt-in_timecode.jpg" />
+    <Content Include="project\media\Download.jpg" />
+    <Content Include="project\media\Gamma_correction_test_picture.png" />
+    <Content Include="project\media\images %281%29.jpg" />
+    <Content Include="project\media\images %282%29.jpg" />
+    <Content Include="project\media\images.jpg" />
+    <Content Include="project\media\Tabelle Sommerreifentest 2.JPG" />
+    <Content Include="project\media\z0.png" />
+    <Content Include="project\media\z30.png" />
+    <Content Include="project\media\z60.png" />
+    <Content Include="project\sub\Download.jpg" />
+    <Content Include="project\sub\Gamma_correction_test_picture.png" />
+    <Content Include="project\sub\images %281%29.jpg" />
+    <Content Include="project\sub\images %282%29.jpg" />
+    <Content Include="project\sub\images.jpg" />
+    <Content Include="project\sub\Tabelle Sommerreifentest 2.JPG" />
+    <Content Include="project\sub\z0.png" />
+    <Content Include="project\sub\z30.png" />
+    <Content Include="project\sub\z60.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>
