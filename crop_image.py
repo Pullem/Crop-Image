@@ -9,7 +9,6 @@
 #"""
 
 import cv2              # pip install opencv-python
-# import numpy as np
 from pathlib import Path
 import os
 import config

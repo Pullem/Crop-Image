@@ -20,13 +20,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="config.py" />
-    <Compile Include="crop_image - Copy.py" />
     <Compile Include="crop_image.py" />
-    <Compile Include="Click_Crop_Image.py" />
     <Compile Include="main.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="arguments of cv2.setMouseCallback%28%29.py" />
     <Compile Include="run.py" />
   </ItemGroup>
   <ItemGroup>
@@ -44,7 +41,6 @@
     <Folder Include="project\cropped\" />
     <Folder Include="project\" />
     <Folder Include="project\media\" />
-    <Folder Include="project\sub\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="project\media\Burnt-in_timecode.jpg" />
@@ -53,19 +49,8 @@
     <Content Include="project\media\images %281%29.jpg" />
     <Content Include="project\media\images %282%29.jpg" />
     <Content Include="project\media\images.jpg" />
-    <Content Include="project\media\Tabelle Sommerreifentest 2.JPG" />
     <Content Include="project\media\z0.png" />
-    <Content Include="project\media\z30.png" />
-    <Content Include="project\media\z60.png" />
-    <Content Include="project\sub\Download.jpg" />
-    <Content Include="project\sub\Gamma_correction_test_picture.png" />
-    <Content Include="project\sub\images %281%29.jpg" />
-    <Content Include="project\sub\images %282%29.jpg" />
-    <Content Include="project\sub\images.jpg" />
-    <Content Include="project\sub\Tabelle Sommerreifentest 2.JPG" />
-    <Content Include="project\sub\z0.png" />
-    <Content Include="project\sub\z30.png" />
-    <Content Include="project\sub\z60.png" />
+    <Content Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>
